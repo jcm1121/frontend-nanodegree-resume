@@ -23,10 +23,40 @@ var work = {};
 	work.dates = "Sept 1981 - Current";
 	work.description = "I have had many positions at AT&T over the past 34 years. I will say I started as a TSPS Telephone Operator";
 
+/*
 var education = {};
 	education["schoolName"] = "Las Positas";
 	education["degree"] = "AA";
 	education["dates"] = "Jan 2013 - June 2015";
+*/
+
+var education {
+	"schools" : [
+		{
+			"name" : "DeAnza Jr. College",
+			"location" : "Cupertino",
+			"dates" : "1981",
+			"degree" : "AS",
+			"major" : ["Gen Ed"]
+		},
+		{
+			"name" : "Las Positas Jr. College",
+			"location" : "Livermore",
+			"degree" : "AS",
+			"major" : ["Comp Sci"]
+		}
+	],
+	"onlineCourses": [
+		{
+			"title" : "JavaScript Basics",
+			"school" : "Udacity",
+			"degree" : "Nano Degree",
+			"url" : "http://www.Udacity.com/course/ud804"
+		}
+	]
+};
+
+
 
 var formattedBioName = HTMLheaderName.replace("%data%", bio.name);
 var formattedBioRole = HTMLheaderRole.replace("%data%", bio.role);
