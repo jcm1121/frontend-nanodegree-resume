@@ -6,7 +6,7 @@ var contact_info = {
 	"email" : "jimmcpherson@prodigy.net",
 	"github" : "jcm1121",
 	"location" : "Livermore, CA.",
-}
+};
 
 var bio = {
 	"name" : "Jim McPherson",
@@ -15,29 +15,51 @@ var bio = {
 	"pic" : "images/me_2.jpg",
 	"message" : "Hi everyone. I am learing a ton!",
 	"skills" : skills
-}
+};
 
-var work = {};
-	work.position = "Sr. Technical Team Lead";
-	work.employer = "AT&T";
-	work.dates = "Sept 1981 - Current";
-	work.description = "I have had many positions at AT&T over the past 34 years. I will say I started as a TSPS Telephone Operator";
 
-/*
-var education = {};
-	education["schoolName"] = "Las Positas";
-	education["degree"] = "AA";
-	education["dates"] = "Jan 2013 - June 2015";
-*/
+var work = {
+	"jobs" : [
+		{
+			"employer" : "Pacific Bell",
+			"title" : "Staff Associate",
+			"location" : "San Ramon",
+			"dates" : "June 1987 - June 1991",
+			"description" : "Clerical Staff Associate"
+		},
+		{
+			"employer" : "Pacific Bell",
+			"title" : "TSPS Operator",
+			"location" : "San Jose",
+			"dates" : "Sept 1981 - June 1987",
+			"description" : "TSPS Operator right out of highschool"
+		},
+		{
+			"employer" : "Sunnyvale Hardware",
+			"title" : "Associate",
+			"location" : "Sunnyvale",
+			"dates" : "June 1980 - June 1981",
+			"description" : "floor associate during my senior year in highschool"
+		},
+		{
+			"employer" : "31 Flavors",
+			"title" : "attendant",
+			"location" : "West LA",
+			"dates" : "June 1978 - June 1979",
+			"description" : "I served ice cream to patrons"
+		}
+	]
+};
 
-var education {
+
+var education = {
 	"schools" : [
 		{
 			"name" : "DeAnza Jr. College",
 			"location" : "Cupertino",
 			"dates" : "1981",
 			"degree" : "AS",
-			"major" : ["Gen Ed"]
+			"major" : ["Gen Ed", "PE"]
 		},
 		{
 			"name" : "Las Positas Jr. College",
@@ -70,7 +92,7 @@ var formattedBioMessage = HTMLwelcomeMsg.replace("%data%", bio.message);
 
 
 var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.employer);
-var formattedWorkPosition = HTMLworkTitle.replace("%data%", work.position);
+var formattedWorkPositions = HTMLworkTitle.replace("%data%", work.position);
 var formattedWorkDates = HTMLworkDates.replace("%data%", work.dates);
 var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.description);
 
