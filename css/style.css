@@ -68,6 +68,7 @@ h5 {
   color: #999;
   line-height: 16px;
   float: left;
+  padding: 0 5%;
 }
 
 .location-text {
@@ -83,12 +84,13 @@ p {
   font-size: 14px;
   color: #333;
   line-height: 21px;
+  padding: 0 5% 10px;
 }
 
 a {
   color: #1199c3;
   text-decoration: none;
-  margin-top: 10px;
+  margin: 10px 5% 0 5%;
   display: block;
 }
 

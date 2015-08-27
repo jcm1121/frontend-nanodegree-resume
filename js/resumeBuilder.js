@@ -1,4 +1,6 @@
 
+var skills = ["Snow Skier", "Happiness", "Engaged", "Hard Worker"];
+
 var contact_info = {
 	"phone" : "5104993242",
 	"email" : "jimmcpherson@prodigy.net",
@@ -11,15 +13,20 @@ var bio = {
 	"role" : "Front End Developer",
 	"contact_info" : contact_info,
 	"pic" : "images/me_2.jpg",
-	"welcome_message" : "Hi everyone. I am learing a ton!"
+	"message" : "Hi everyone. I am learing a ton!",
+	"skills" : skills
 }
-var  work {}
 
-work.position = "Sr. Technical Team Lead";
-work.employer = "AT&T";
-work.yearsWorked = "34";
-work.city = "San Ramon";
+var work = {};
+	work.position = "Sr. Technical Team Lead";
+	work.employer = "AT&T";
+	work.dates = "Sept 1981 - Current";
+	work.description = "I have had many positions at AT&T over the past 34 years. I will say I started as a TSPS Telephone Operator";
 
+var education = {};
+	education["schoolName"] = "Las Positas";
+	education["degree"] = "AA";
+	education["dates"] = "Jan 2013 - June 2015";
 
 var formattedBioName = HTMLheaderName.replace("%data%", bio.name);
 var formattedBioRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -28,65 +35,52 @@ var formattedBioEmail = HTMLemail.replace("%data%", bio.contact_info.email);
 var formattedBioGithub = HTMLgithub.replace("%data%", bio.contact_info.github);
 var formattedBioLocation = HTMLlocation.replace("%data%", bio.contact_info.location);
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.pic);
+var formattedBioMessage = HTMLwelcomeMsg.replace("%data%", bio.message);
+
+
+
+var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.employer);
 var formattedWorkPosition = HTMLworkTitle.replace("%data%", work.position);
+var formattedWorkDates = HTMLworkDates.replace("%data%", work.dates);
+var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.description);
+
+var formattedSchoolName = HTMLschoolName.replace("%data%", education.schoolName);
+var formattedDegree = HTMLschoolDegree.replace("%data%", education.degree);
+var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.dates);
 
 
 $("#header").prepend(formattedBioRole);
 $("#header").prepend(formattedBioName);
+
 $("#topContacts").append(formattedBioPhone);
 $("#topContacts").append(formattedBioEmail);
 $("#topContacts").append(formattedBioGithub);
 $("#topContacts").append(formattedBioLocation);
+
 $("#header").append(formattedBioPic);
-$("#workExperience").append(work.position);
+$("#header").append(formattedBioMessage);
+$("#header").append(HTMLskillsStart);
 
-
-HTMLworkEmployer
-
-
-
-
-var str1 = "audacity";
-var str2 = str1.slice(2);
-var str3 = str1[1].toUpperCase() + str2;
-console.log(str3);
-
-/*
-var oldArray = [1,43, 54, 8];
-console.log(oldArray);
-var newArray = [];
-var length = oldArray.length;
-for(var i=0; i < length; i++) {
-	newArray[i] = oldArray.pop();
-	console.log("in for loop");
+var length = skills.length;
+for (var i = 0; i < length; i++) {
+	var formattedBioSkills = HTMLskills.replace("%data%", bio.skills.pop());
+	$("#header").append(formattedBioSkills);
 }
-newArray.reverse();
-console.log(newArray);
-*/
-/*
-var oldArray = [1,43, 54, 8];
-var newArray = [];
-newArray = oldArray.slice(0);
-var lastElement = newArray.pop();
-newArray.push(lastElement +1);
-console.log(newArray);
-*/
-/*
-var name = "AlbERt EINstEiN";
-var searchIndex = name.search(" ");
-var fName = name.slice(0,searchIndex);
-fName = fName.toLowerCase();
-var finalName = fName.substr(0, 1).toUpperCase() + fName.substr(1);
-var lName = name.slice(searchIndex);
-lName = lName.toUpperCase();
-finalName = finalName + lName;
-console.log(finalName);
-*/
-/*
-fName = fName.toLowerCase();
-fName.atChar[0].toUpperCase;
-console.log(fName);
-*/
+
+
+$("#workExperience").append(HTMLworkStart);
+$("#workExperience").append(formattedWorkEmployer + formattedWorkPosition);
+$("#workExperience").append(formattedWorkDates);
+$("#workExperience").append(formattedWorkDescription);
+
+HTMLworkLocation
+
+
+
+$("#education").append(HTMLschoolStart);
+$("#education").append(formattedSchoolName + formattedDegree);
+$("#education").append(formattedSchoolDates);
+
 
 
 
