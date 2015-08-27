@@ -78,6 +78,28 @@ var education = {
 	]
 };
 
+var projects = {
+	"projects" : [
+		{
+			"title" : "Retail Store IVR - Add SMS Messaging",
+			"dates" : "Oct 2015",
+			"description" : "Add SMS Messaging for callers using smartphones",
+			"images" : "images/197x148.gif"
+		},
+		{
+			"title" : "Retail Store IVR - Add CSI Data Dips",
+			"dates" : "Sept 2015",
+			"description" : "Add CSI Data Dip using caller's TN to Alternate Menu. Control data dip at the store level",
+			"images" : "images/197x148.gif"
+		},
+		{
+			"title" : "Retail Store IVR - Alternate Menu",
+			"dates" : "Aug 2015",
+			"description" : "Add Alternate Menu with additional sub menus and prompting. Alternate Menu is toggled at the store level",
+			"images" : "images/197x148.gif"
+		}
+	]
+};
 
 
 var formattedBioName = HTMLheaderName.replace("%data%", bio.name);
