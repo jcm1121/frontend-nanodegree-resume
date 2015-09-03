@@ -1,7 +1,8 @@
 
+//var skills = [];
 var skills = ["Snow Skier", "Happiness", "Engaged", "Hard Worker"];
 
-var contact_info = {
+var contacts = {
 	"phone" : "5104993242",
 	"email" : "jimmcpherson@prodigy.net",
 	"github" : "jcm1121",
@@ -11,7 +12,7 @@ var contact_info = {
 var bio = {
 	"name" : "Jim McPherson",
 	"role" : "Front End Developer",
-	"contact_info" : contact_info,
+	"contacts" : contacts,
 	"pic" : "images/me_2.jpg",
 	"message" : "Hi everyone. I am learing a ton!",
 	"skills" : skills
@@ -40,6 +41,14 @@ var work = {
 			"location" : "Sunnyvale",
 			"dates" : "June 1980 - June 1981",
 			"description" : "floor associate during my senior year in highschool"
+		},
+
+		{
+			"employer" : "Winn Dixie Supermarket",
+			"title" : "Courtesy Clerk",
+			"location" : "Miami, Fl",
+			"dates" : "Jan 1980",
+			"description" : "I served as a courtesy clerk at the Supermarket"
 		},
 		{
 			"employer" : "31 Flavors",
@@ -92,31 +101,53 @@ var projects = {
 			"title" : "Retail Store IVR - Add SMS Messaging",
 			"dates" : "Oct 2015",
 			"description" : "Add SMS Messaging for callers using smartphones",
-			"image" : "images/197x148.gif"
+			"image" : ["images/197x148.gif", "images/197x148.gif"]
 		},
 		{
 			"title" : "Retail Store IVR - Add CSI Data Dips",
 			"dates" : "Sept 2015",
 			"description" : "Add CSI Data Dip using caller's TN to Alternate Menu. Control data dip at the store level",
-			"image" : "images/197x148.gif"
+			"image" : ["images/197x148.gif", "images/197x148.gif"]
 		},
 		{
 			"title" : "Retail Store IVR - Alternate Menu",
 			"dates" : "Aug 2015",
 			"description" : "Add Alternate Menu with additional sub menus and prompting. Alternate Menu is toggled at the store level",
-			"image" : "images/197x148.gif"
+			"image" : ["images/197x148.gif", "images/197x148.gif"]
 		}
-	]
+	],
+	"display" : function() {
+		for(var i in projects.projects) {
+			$("#projects").append(HTMLprojectStart);
+			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+			var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+			$(".projects-entry:last").append(formattedProjectTitle);
+			$(".projects-entry:last").append(formattedProjectDates);
+			$(".projects-entry:last").append(formattedProjectDescription);
+			if (projects.projects[i].image.length > 0) {
+				console.log("in image if statement");
+				for(var y in projects.projects[i].image) {
+					var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].image[y]);
+					$(".projects-entry:last").append(formattedProjectImage);
+				}
+			}
+		}
+	}
 };
+
+
+
+
 
 //Begin Header section
 // Load BIO Information from the BIO JSOP object
 var formattedBioName = HTMLheaderName.replace("%data%", bio.name);
 var formattedBioRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedBioPhone = HTMLmobile.replace("%data%", bio.contact_info.phone);
-var formattedBioEmail = HTMLemail.replace("%data%", bio.contact_info.email);
-var formattedBioGithub = HTMLgithub.replace("%data%", bio.contact_info.github);
-var formattedBioLocation = HTMLlocation.replace("%data%", bio.contact_info.location);
+var formattedBioPhone = HTMLmobile.replace("%data%", bio.contacts.phone);
+var formattedBioEmail = HTMLemail.replace("%data%", bio.contacts.email);
+var formattedBioGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+var formattedBioLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.pic);
 var formattedBioMessage = HTMLwelcomeMsg.replace("%data%", bio.message);
 
@@ -132,34 +163,20 @@ $("#header").append(formattedBioPic);
 $("#header").append(formattedBioMessage);
 $("#header").append(HTMLskillsStart);
 
-// loop through Skills array, populate the formatted skills
+// loop through Skills array, populate formatted bio skills
 // and append to the DIV ID Header
-var length = skills.length;
-for (var i = 0; i < length; i++) {
-	var formattedBioSkills = HTMLskills.replace("%data%", bio.skills.pop());
-	$("#header").append(formattedBioSkills);
+if (skills.length > 0) {
+	var length = skills.length;
+	for (var i = 0; i < length; i++) {
+		var formattedBioSkills = HTMLskills.replace("%data%", bio.skills.pop());
+		$("#header").append(formattedBioSkills);
+	}
 }
 
-//Begin Work Experience section
-// assign the length of work.jobs array to workLength variable
-var workLength = work.jobs.length;
+// call projects.display to display the projects object and its contents
+projects.display();
 
-// loop through the work JSON to populate
-// formattedWork variables, then append the DIV ID=workExperience
-// using the formattedWork values
-for (var i=0; i< workLength; i++) {
-	var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
-	var formattedWorkPosition = HTMLworkTitle.replace("%data%", work.jobs[i].title);
-	var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
-	var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
-	var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
-
-	$("#workExperience").append(HTMLworkStart);
-	$("#workExperience").append(formattedWorkEmployer + formattedWorkPosition);
-	$("#workExperience").append(formattedWorkDates);
-	$("#workExperience").append(formattedWorkLocation);
-	$("#workExperience").append(formattedWorkDescription);
-}
+/*
 
 //start of Projects Section
 $("#projects").append(HTMLprojectStart);
@@ -180,6 +197,8 @@ for (var i=0; i< projectsLength; i++) {
 	$("#projects").append(formattedProjectDescription);
 	$("#projects").append(formattedProjectImage);
 }
+
+*/
 
 //Begin Education section
 $("#education").append(HTMLschoolStart);
@@ -223,16 +242,44 @@ for (var i=0; i< onlineCourseLength; i++) {
 
 
 
+function displayWork() {
+		//Begin Work Experience section
+	// assign the length of work.jobs array to workLength variable
+	var workLength = work.jobs.length;
+
+	// loop through the work JSON to populate
+	// formattedWork variables, then append the DIV ID=workExperience
+	// using the formattedWork values
+	//for (var i=0; i< workLength; i++) {
+	for (i in work.jobs) {
+		var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
+		var formattedWorkPosition = HTMLworkTitle.replace("%data%", work.jobs[i].title);
+		var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
+		var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
+		var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
+
+		$("#workExperience").append(HTMLworkStart);
+		$("#workExperience").append(formattedWorkEmployer + formattedWorkPosition);
+		$("#workExperience").append(formattedWorkDates);
+		$("#workExperience").append(formattedWorkLocation);
+		$("#workExperience").append(formattedWorkDescription);
+	}
+}
+
+displayWork();
 
 
 
+$("#main").append(internationalizeButton);
+$("#mapDiv").append(googleMap);
 
-
-
-
-
-
-
+function inName(nameString) {
+	var nameArray = [];
+	nameArray = nameString.trim().split(" ");
+	nameArray[1] = nameArray[1].toUpperCase();
+	nameArray[0] = nameArray[0].slice(0,1).toUpperCase() + nameArray[0].slice(1).toLowerCase();
+	return nameArray[0] + " " + nameArray[1];
+}
 
 
 
