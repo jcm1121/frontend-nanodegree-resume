@@ -58,7 +58,6 @@ h3,
 h4,
 h5 {
   padding:10px 5%;
-
 }
 
 
@@ -77,6 +76,7 @@ h5 {
   color: #999;
   line-height: 16px;
   float: right;
+  padding-right: 5%;
 
 }
 
@@ -160,6 +160,11 @@ ul {
 
 img {
   padding: 10px 5%;
+}
+
+.projectPics {
+  height: 150px;
+  width: 200px;
 }
 
 span {
